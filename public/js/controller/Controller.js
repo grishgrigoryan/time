@@ -185,7 +185,8 @@
             $userService.getFinishedCustomers().then(function (result) {
                 var totalPrice = 0;
                 result=result.map(function (item) {
-                    totalPrice=+item.price;
+                    item.price = parseInt(item.price);
+                    totalPrice = totalPrice+ item.price;
                     item['started_at'] = item.started_at.replace(/GMT(.*)/g,"");
                     item['finished_at'] = item.finished_at.replace(/GMT(.*)/g,"");
                     return item;
