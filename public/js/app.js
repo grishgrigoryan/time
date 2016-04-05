@@ -17,7 +17,7 @@ angular
                 controller: 'DashboardController'
             }).
             otherwise({
-                redirectTo: '/dashboard'
+                redirectTo: '/active'
             });
 
     }]);
