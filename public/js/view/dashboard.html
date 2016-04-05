@@ -1,0 +1,32 @@
+<md-content>
+    <md-card>
+        <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
+            <div class="md-toolbar-tools">
+                Total price {{totalPrice}} AMD<br>
+                <md-button class=" md-raised md-primary" ng-click="clearHistory()">Clear history</md-button>
+            </div>
+        </md-toolbar>
+        <md-table-container>
+            <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
+                <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+                <tr md-row>
+                    <th md-column md-order-by="hash"><span>Hash</span></th>
+                    <th md-column md-order-by="price"><span>Price</span></th>
+                    <th md-column md-order-by="started_at"><span>Started At</span></th>
+                    <th md-column md-order-by="finished_at"><span>Finished At</span></th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect"  ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                    <td md-cell>{{dessert.hash}}</td>
+                    <td md-cell>{{dessert.price}}</td>
+                    <td md-cell>{{dessert.started_at}}</td>
+                    <td md-cell>{{dessert.finished_at}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+        <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+    </md-card>
+</md-content>

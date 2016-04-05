@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>IndexedDB ToDo Example</title>
+    <link rel="stylesheet" href="public/css/app.css"/>
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body  ng-app="starterApp" layout="row" ng-cloak  >
+
+<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" ng-controller="HeaderController as header">
+    <md-toolbar layout="row" class="md-whiteframe-z1">
+        <md-button class="menu md-raised" ng-hide="isActive('/active')"  ng-click="toggleHash('/active')">
+            Active
+        </md-button>
+        <md-button class="menu md-raised"   ng-hide="isActive('/dashboard')"  ng-click="toggleHash('/dashboard')">
+            History
+        </md-button>
+    </md-toolbar>
+    <md-content flex id="content"  ng-view >
+    </md-content>
+</div>
+
+
+
+<script src="public/js/libs/angular.js"></script>
+<script src="public/js/libs/angular-animate.js"></script>
+<script src="public/js/libs/angular-aria.js"></script>
+<script src="public/js/libs/angular-route.js"></script>
+<script src="public/js/libs/angular-material.js"></script>
+<script src="public/js/libs/angular-table.js"></script>
+
+<script src="public/js/service/UserService.js"></script>
+<script src="public/js/app.js"></script>
+<script src="public/js/controller/Controller.js"></script>
+
+</body>
+</html>
